@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import Toolbar from './uikit/Toolbar';
 
 class UploadPhotoPage extends Component {
@@ -8,7 +8,7 @@ class UploadPhotoPage extends Component {
         return (
             <View style={styles.container}>
                 <Toolbar />
-                <View style={styles.page}>
+                <ScrollView style={styles.page}>
                     <Text style={styles.textHeading}>Upload Photo</Text>
                     <View style={styles.buttonAddWrapper}>
                         <View style={styles.buttonAddIcon}>
@@ -18,7 +18,7 @@ class UploadPhotoPage extends Component {
                     </View>
                     <Text style={styles.text}>Please upload any photo here.</Text>
                     
-                </View>
+                </ScrollView>
                 <View style={styles.footer}>
                     <TouchableOpacity >
                         <View style={styles.buttonNextWrapper}>
