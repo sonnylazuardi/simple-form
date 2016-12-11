@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
 import Toolbar from './uikit/Toolbar';
 
 class UploadPhotoPage extends Component {
@@ -9,15 +9,21 @@ class UploadPhotoPage extends Component {
             <View style={styles.container}>
                 <Toolbar />
                 <View style={styles.page}>
-                    <Text style={styles.textHeading}>Upload Photo</Text>
-                    <View style={styles.buttonAddWrapper}>
-                        <View style={styles.buttonAddIcon}>
-                            <Image source={require('../images/icon-add.png')} style={styles.iconAdd} />
-                            <Text style={styles.textAdd}>Add Photo</Text>
-                        </View>
+                    <Text style={styles.textHeading}>Your Contact Information</Text>
+                    <Text style={styles.text}>Fill in the following details</Text>
+                    <View style={styles.row}>
+                        <TextInput style={styles.input} placeholder={'Your First Name'} />
+                        <Text style={styles.textError}>This field cannot be empty</Text>
                     </View>
-                    <Text style={styles.text}>Please upload any photo here.</Text>
-                    
+                    <View style={styles.row}>
+                        <TextInput style={styles.input} placeholder={'Your Last Name'} />
+                    </View>
+                    <View style={styles.row}>
+                        <TextInput style={styles.input} placeholder={'Contact Number'} />
+                    </View>
+                    <View style={styles.row}>
+                        <TextInput style={[styles.input, styles.inputArea]} placeholder={'Address'} multiline={true} />
+                    </View>
                 </View>
                 <View style={styles.footer}>
                     <TouchableOpacity >
@@ -57,12 +63,14 @@ const styles = StyleSheet.create({
     },
     text: {
         margin: 15,
+        marginTop: 5,
         color: '#565D6B',
         fontSize: 13
     },
     textHeading: {
         margin: 15,
-        marginVertical: 20,
+        marginTop: 20,
+        marginBottom: 0,
         color: '#363A45',
         fontSize: 16
     },
@@ -85,6 +93,31 @@ const styles = StyleSheet.create({
         fontSize: 13,
         marginTop: 10,
         color: '#00B140'
+    },
+    input: {
+        backgroundColor: '#EAEFF2',
+        borderWidth: 1,
+        borderColor: '#CCD6DD',
+        padding: 15,
+        paddingVertical: 10,
+        paddingBottom: 5,
+        height: 45,
+        borderRadius: 4,
+        fontSize: 16,
+    },
+    row: {
+        marginBottom: 25,
+    },
+    inputArea: {
+        height: 90,
+
+    },
+    textError: {
+        color: '#D64425',
+        fontSize: 11,
+        marginHorizontal: 15,
+        marginVertical: 5,
+        position: 'absolute'
     }
 
 });
