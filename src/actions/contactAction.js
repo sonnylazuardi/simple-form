@@ -1,6 +1,7 @@
 export const SET_INFO = 'SET_INFO';
 export const SET_ERROR = 'SET_ERROR';
 export const SHOW_CONTACT_ERROR = 'SHOW_CONTACT_ERROR';
+export const RESET_CONTACT = 'RESET_CONTACT';
 
 export function setInfo(field, value) {
     return {
@@ -33,7 +34,7 @@ export function validate() {
             errors['address'] = 'This field cannot be empty';
             valid = false;
         }
-        if (!state.contactNumber.match(/^[+0-9()-\s]+$/)) {
+        if (!state.contactNumber.match(/^[+0-9()-\s#*]+$/)) {
             errors['contactNumber'] = 'This field should contain only numbers';
             valid = false;
         }
@@ -59,5 +60,11 @@ export function showContactError(show) {
     return {
         type: SHOW_CONTACT_ERROR,
         payload: show
+    }
+}
+
+export function resetContact() {
+    return {
+        type: RESET_CONTACT
     }
 }

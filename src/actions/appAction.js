@@ -1,11 +1,14 @@
-export const ACTIVATE_PAGE = 'ACTIVATE_PAGE';
+export const SET_PAGE_ACTIVE = 'SET_PAGE_ACTIVE';
 export const SET_INDEX = 'SET_INDEX';
 export const SET_PAGE = 'SET_PAGE';
 
-export function activatePage(page) {
+export function setPageActive(page, active) {
     return {
-        type: ACTIVATE_PAGE,
-        payload: page
+        type: SET_PAGE_ACTIVE,
+        payload: {
+            page,
+            active
+        }
     }
 }
 

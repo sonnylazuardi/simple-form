@@ -5,7 +5,7 @@ class CompletePage extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.container} className="page-container">
                 <ScrollView style={styles.page}>
                     <Text style={styles.textHeading}>Complete.</Text>
                 </ScrollView>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     textHeading: {
         margin: 15,
-        marginTop: 20,
+        marginTop: 10,
         color: '#14202C',
         fontSize: 18, 
         textAlign: 'center'

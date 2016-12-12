@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, Animated, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Image, Animated, Dimensions, Platform } from 'react-native';
 import UploadPhotoPage from './components/UploadPhotoPage';
 import ContactInformationPage from './components/ContactInformationPage';
 import CompletePage from './components/CompletePage';
@@ -8,7 +8,14 @@ import { TabViewAnimated } from 'react-native-tab-view';
 import TabBar from './components/uikit/TabBar';
 
 import { connect } from 'react-redux';
-import { activatePage, setIndex } from './actions/appAction';
+import { setPageActive, setIndex } from './actions/appAction';
+import { resetContact } from './actions/contactAction';
+
+if (Platform.OS == 'web') {
+    var KeyboardAvoidingView = View;
+} else {
+    var {KeyboardAvoidingView} = require('react-native')
+}
 
 const initialLayout = {
     height: 0,
@@ -41,6 +48,7 @@ class Navigator extends Component {
             <View>
                 <TabBar
                     {...props}
+                    pressColor={'#ddd'}
                     renderIndicator={this.renderIndicator}
                     style={styles.tabbar}
                     tabStyle={styles.tab}
@@ -78,9 +86,21 @@ class Navigator extends Component {
         return route.active;
     };
 
+    componentWillReceiveProps(nextProps) {
+        const {contact, photo} = this.props;
+        if (contact.valid && !nextProps.contact.valid) {
+            this.props.setPageActive(3, false);
+        }
+        if (photo.valid && !nextProps.photo.valid) {
+            this.props.resetContact();
+            this.props.setPageActive(2, false);
+            this.props.setPageActive(3, false);
+        }
+    }
+
     render() {
         return (
-            <View style={styles.container}>
+            <KeyboardAvoidingView style={styles.container} behavior="padding">
                 <View style={styles.toolbar} />
                 <TabViewAnimated
                     style={styles.container}
@@ -91,14 +111,14 @@ class Navigator extends Component {
                     initialLayout={initialLayout}
                     canJumpToTab={this.canJumpToTab}
                     />
-            </View>
+            </KeyboardAvoidingView>
         );
     }
 }
 
 const styles = StyleSheet.create({
     toolbar: {
-        height: 65,
+        height: Platform.OS == 'ios' ? 65 : 50,
         backgroundColor: '#00B140',
     },
     container: {
@@ -140,7 +160,9 @@ const styles = StyleSheet.create({
 });
 
 Navigator = connect(state => ({
-    app: state.app
-}), {activatePage, setIndex})(Navigator);
+    app: state.app,
+    photo: state.photo,
+    contact: state.contact
+}), {setPageActive, setIndex, resetContact})(Navigator);
 
 export default Navigator;

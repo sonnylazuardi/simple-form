@@ -1,7 +1,7 @@
 import {
     SET_INDEX,
     SET_PAGE,
-    ACTIVATE_PAGE,
+    SET_PAGE_ACTIVE,
 } from '../actions/appAction';
 
 const initialState = {
@@ -26,15 +26,15 @@ export default function appReducer(state = initialState, action = {}) {
                 ...state,
                 index: (payload - 1),
             };
-        case ACTIVATE_PAGE:
+        case SET_PAGE_ACTIVE:
             const {routes} = state;
-            const index = routes.findIndex((route) => parseInt(route.key) == payload);
+            const index = routes.findIndex((route) => parseInt(route.key) == payload.page);
             if (index == -1) return state;
             return {
                 ...state,
                 routes: [
                     ...routes.slice(0, index),
-                    {...routes[index], active: true},
+                    {...routes[index], active: payload.active},
                     ...routes.slice(index + 1)
                 ]
             };

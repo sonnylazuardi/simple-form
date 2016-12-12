@@ -56,7 +56,7 @@ class TextFieldHolder extends Component {
 
     componentWillReceiveProps(newProps) {
         return Animated.timing(this.state.marginAnim, {
-            toValue: newProps.withValue ? 15 : 0,
+            toValue: newProps.withValue ? 13 : 0,
             duration: 230
         }).start();
     }
@@ -91,6 +91,15 @@ class FloatLabelTextField extends Component {
         }
     }
 
+    handleSubmitEditing() {
+        if (this.props.returnKeyType == 'done') return;
+        if (this.props.nextFocus && typeof this.props.nextFocus === 'function') {
+            this.props.nextFocus().focus()
+        } else {
+            this.blur()
+        }
+    }
+
     render() {
         return(
             <View style={[styles.container, this.props.style]}>
@@ -102,14 +111,18 @@ class FloatLabelTextField extends Component {
                         </FloatingLabel>
                         <TextFieldHolder withValue={this.state.text}>
                             <TextInput {...this.props}
+                                ref="textInput"
                                 keyboardType={this.props.keyboardType || 'default'}
                                 style={[styles.valueText, this.props.multiline ? {height: 75} : null]}
                                 defaultValue={this.props.defaultValue}
                                 value={this.state.text}
+                                underlineColorAndroid={'transparent'}
                                 maxLength={this.props.maxLength}
                                 onFocus={() => this.setFocus()}
                                 onBlur={() => this.unsetFocus()}
                                 multiline={this.props.multiline}
+                                returnKeyType={this.props.returnKeyType}
+                                onSubmitEditing={this.handleSubmitEditing.bind(this)}
                                 onChangeText={(value) => this.setText(value)}
                             />
                         </TextFieldHolder>
@@ -149,6 +162,14 @@ class FloatLabelTextField extends Component {
         }
     }
 
+    focus = () => {
+        this.refs['textInput'].focus();
+    };
+
+    blur = () => {
+        this.refs['textInput'].blur();
+    };
+
     setText(value) {
         this.setState({
             text: value
@@ -179,7 +200,7 @@ const styles = StyleSheet.create({
         left: 0
     },
     fieldLabel: {
-        height: 10,
+        height: 15,
         fontSize: 9,
         color: '#565D6B'
     },
@@ -193,9 +214,13 @@ const styles = StyleSheet.create({
         borderColor: '#C8C7CC',
     },
     valueText: {
-        height: 20,
+        height: 28,
+        padding: 0,
+        paddingTop: 5,
         fontSize: 16,
-        color: '#111111'
+        color: '#111111',
+        backgroundColor: 'transparent',
+        textAlignVertical: 'top'
     },
     focused: {
         color: "#565D6B"

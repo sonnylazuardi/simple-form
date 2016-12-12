@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
     },
     tabbar: {
         backgroundColor: 'black',
-        elevation: 4,
         shadowColor: 'black',
         shadowOpacity: 0.1,
         shadowRadius: StyleSheet.hairlineWidth,
