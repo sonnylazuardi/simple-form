@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, Animated, Dimensions } from 'react-native';
 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import * as reducers from './reducers';
+import thunk from 'redux-thunk';
 
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const reducer = combineReducers(reducers);
-const store = createStore(reducer);
+const store = createStoreWithMiddleware(reducer);
 
 import Navigator from './navigator';
 

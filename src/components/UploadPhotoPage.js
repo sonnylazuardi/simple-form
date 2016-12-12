@@ -33,6 +33,7 @@ class UploadPhotoPage extends Component {
                 }
 
                 this.props.setSource(source);
+                this.props.showPhotoError(false);
             }
         });
     }

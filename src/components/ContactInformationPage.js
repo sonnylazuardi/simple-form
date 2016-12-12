@@ -1,31 +1,85 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, Image, TouchableOpacity, TextInput, ScrollView} from 'react-native';
+import FloatingLabelTextInput from './uikit/FloatingLabelTextInput';
+
+import { connect } from 'react-redux';
+import { setInfo, validate, showContactError } from '../actions/contactAction';
+import { activatePage, setPage } from '../actions/appAction';
 
 class UploadPhotoPage extends Component {
-
+    onChangeText(field, value) {
+        this.props.setInfo(field, value);
+        this.props.validate()
+    }
+    onSubmit() {
+        this.props.validate().then(({errors, valid}) => {
+            if (valid) {
+                this.props.activatePage(3);
+                this.props.setPage(3);
+                this.props.showContactError(false);
+            } else {
+                this.props.showContactError(true);
+            }
+        });
+    }
     render() {
+        const {contact} = this.props;
+        const {errors, showError, valid} = contact;
         return (
             <View style={styles.container}>
                 <ScrollView style={styles.page}>
                     <Text style={styles.textHeading}>Your Contact Information</Text>
                     <Text style={styles.text}>Fill in the following details</Text>
                     <View style={styles.row}>
-                        <TextInput style={styles.input} placeholder={'Your First Name'} />
-                        <Text style={styles.textError}>This field cannot be empty</Text>
+                        <FloatingLabelTextInput 
+                            style={styles.input} 
+                            placeholder={'Your First Name'} 
+                            noBorder={true} 
+                            value={contact.firstName}
+                            onChangeTextValue={this.onChangeText.bind(this, 'firstName')} />
+                        {showError && errors['firstName'] ?
+                            <Text style={styles.textError}>{errors['firstName']}</Text>
+                            : null}
                     </View>
                     <View style={styles.row}>
-                        <TextInput style={styles.input} placeholder={'Your Last Name'} />
+                        <FloatingLabelTextInput 
+                            style={styles.input} 
+                            placeholder={'Your Last Name'} 
+                            noBorder={true} 
+                            value={contact.lastName}
+                            onChangeTextValue={this.onChangeText.bind(this, 'lastName')} />
+                        {showError && errors['lastName'] ?
+                            <Text style={styles.textError}>{errors['lastName']}</Text>
+                            : null}
                     </View>
                     <View style={styles.row}>
-                        <TextInput style={styles.input} placeholder={'Contact Number'} />
+                        <FloatingLabelTextInput 
+                            style={styles.input} 
+                            placeholder={'Contact Number'} 
+                            noBorder={true} 
+                            keyboardType={'phone-pad'}
+                            value={contact.contactNumber}
+                            onChangeTextValue={this.onChangeText.bind(this, 'contactNumber')} />
+                        {showError && errors['contactNumber'] ?
+                            <Text style={styles.textError}>{errors['contactNumber']}</Text>
+                            : null}
                     </View>
                     <View style={styles.row}>
-                        <TextInput style={[styles.input, styles.inputArea]} placeholder={'Address'} multiline={true} />
+                        <FloatingLabelTextInput 
+                            style={[styles.input, styles.inputArea]} 
+                            placeholder={'Address'} 
+                            noBorder={true} 
+                            multiline={true} 
+                            value={contact.address}
+                            onChangeTextValue={this.onChangeText.bind(this, 'address')} />
+                        {showError && errors['address'] ?
+                            <Text style={styles.textError}>{errors['address']}</Text>
+                            : null}
                     </View>
                 </ScrollView>
                 <View style={styles.footer}>
-                    <TouchableOpacity >
-                        <View style={styles.buttonNextWrapper}>
+                    <TouchableOpacity onPress={this.onSubmit.bind(this)}>
+                        <View style={[styles.buttonNextWrapper, !valid ? styles.buttonNextInvalid : null]}>
                             <Text style={styles.buttonNextText}>NEXT</Text>
                         </View>
                     </TouchableOpacity>
@@ -80,6 +134,9 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         margin: 10
     },
+    buttonNextInvalid: {
+        backgroundColor: '#CCD6DD',
+    },
     buttonNextText: {
         color: '#fff'
     },
@@ -97,11 +154,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#CCD6DD',
         padding: 15,
-        paddingVertical: 10,
+        paddingVertical: 0,
         paddingBottom: 5,
         height: 45,
         borderRadius: 4,
-        fontSize: 16,
         marginBottom: 20
     },
     row: {
@@ -109,7 +165,6 @@ const styles = StyleSheet.create({
     },
     inputArea: {
         height: 90,
-
     },
     textError: {
         color: '#D64425',
@@ -121,5 +176,9 @@ const styles = StyleSheet.create({
     }
 
 });
+
+UploadPhotoPage = connect(state => ({
+    contact: state.contact
+}), {setInfo, validate, showContactError, activatePage, setPage})(UploadPhotoPage);
 
 export default UploadPhotoPage;

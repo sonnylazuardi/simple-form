@@ -13,7 +13,8 @@
 		"react-native-image-picker": "latest",
 		"react-native-tab-view": "^0.0.40",
 		"react-redux": "^4.4.6",
-		"redux": "^3.6.0"
+		"redux": "^3.6.0",
+		"redux-thunk": "^2.1.0"
 	},
 	"devDependencies": {
 		"babel-jest": "17.0.2",
