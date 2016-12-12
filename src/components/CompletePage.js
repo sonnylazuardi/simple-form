@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, Image, TouchableOpacity, TextInput, ScrollView} from 'react-native';
-import Toolbar from './uikit/Toolbar';
 
 class CompletePage extends Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <Toolbar />
                 <ScrollView style={styles.page}>
                     <Text style={styles.textHeading}>Complete.</Text>
                 </ScrollView>

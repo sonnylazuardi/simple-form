@@ -1,25 +1,24 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
-import UploadPhotoPage from './components/UploadPhotoPage';
-import ContactInformationPage from './components/ContactInformationPage';
-import CompletePage from './components/CompletePage';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, Image, Animated, Dimensions } from 'react-native';
 
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import * as reducers from './reducers';
+
+const reducer = combineReducers(reducers);
+const store = createStore(reducer);
+
+import Navigator from './navigator';
 
 class App extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <UploadPhotoPage />
-            </View>
+            <Provider store={store}>
+                <Navigator />
+            </Provider>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-});
 
 export default App;

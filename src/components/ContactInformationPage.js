@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, Image, TouchableOpacity, TextInput, ScrollView} from 'react-native';
-import Toolbar from './uikit/Toolbar';
 
 class UploadPhotoPage extends Component {
 
     render() {
         return (
             <View style={styles.container}>
-                <Toolbar />
                 <ScrollView style={styles.page}>
                     <Text style={styles.textHeading}>Your Contact Information</Text>
                     <Text style={styles.text}>Fill in the following details</Text>
@@ -104,9 +102,10 @@ const styles = StyleSheet.create({
         height: 45,
         borderRadius: 4,
         fontSize: 16,
+        marginBottom: 20
     },
     row: {
-        marginBottom: 25,
+        marginBottom: 10,
     },
     inputArea: {
         height: 90,
@@ -117,7 +116,8 @@ const styles = StyleSheet.create({
         fontSize: 11,
         marginHorizontal: 15,
         marginVertical: 5,
-        position: 'absolute'
+        position: 'absolute',
+        bottom: 0,
     }
 
 });
