@@ -1,8 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 
-console.log(path.resolve(__dirname, '../node_modules/react-native-tab-view'));
-
 module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'public')

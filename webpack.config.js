@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: path.join(__dirname, '../index.web.js'),
+    entry: path.join(__dirname, './index.web.js'),
     module: {
         loaders: [
             {
@@ -11,7 +11,7 @@ module.exports = {
                 query: { presets: ['react', 'es2015', 'stage-0'], cacheDirectory: true, plugins: [
                     "add-module-exports"
                 ] },
-                include: [path.resolve('./'), __dirname, path.resolve(__dirname, '../src'), path.resolve(__dirname, '../node_modules/react-native-tab-view')]
+                include: [path.resolve('./'), __dirname, path.resolve(__dirname, './src'), path.resolve(__dirname, './node_modules/react-native-tab-view')]
             },
             {
                 test: /\.(gif|jpe?g|png|svg)$/,
@@ -21,7 +21,7 @@ module.exports = {
         ]
     },
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.resolve(__dirname, './web/public'),
         filename: 'bundle.js'
     },
     plugins: [
@@ -33,7 +33,7 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            'react-native': 'react-native-web'
+            'react-native': path.resolve(__dirname, './node_modules/react-native-web')
         }
     }
 };
