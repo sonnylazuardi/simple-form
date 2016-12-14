@@ -5,9 +5,10 @@
     "scripts": {
         "start": "node node_modules/react-native/local-cli/cli.js start",
         "test": "jest",
-        "dev": "webpack-dev-server --port 3000 --config web/webpack.config.dev.js --inline --hot --colors --quiet"
+        "dev": "webpack-dev-server --port 3000 --config webpack.config.dev.js --inline --hot --colors --quiet"
     },
     "dependencies": {
+        "debounce": "^1.0.0",
         "react": "15.3.2",
         "react-addons-shallow-compare": "15.3.2",
         "react-native": "0.38",
