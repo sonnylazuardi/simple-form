@@ -51,7 +51,7 @@ The exponent source is on `exponent` branch
 - change `.babelrc` so that it contains `.babelrcweb`
 - For development mode: `npm run dev`
 - For production mode: `npm run build`
-- `cd web/public && python -m SimpleHTTPServer 8000`
-- open `http://localhost:8000` on browser
+- `cd web/public`
+- open `index.html`
 
 or open the demo on github pages of this repo http://sonny.js.org/simple-form/
