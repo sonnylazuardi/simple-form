@@ -22,12 +22,12 @@ Here is the stack of technology of this repo:
 
 ## Display on various screen sizes
 
-![ss](ss1.png)
-![ss](ss2.png)
-![ss](ss3.png)
-![ss](ss4.png)
-![ss](ss5.png)
-![ss](ss6.png)
+![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss1.png)
+![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss2.png)
+![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss3.png)
+![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss4.png)
+![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss5.png)
+![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss6.png)
 
 ## Running on device
 
