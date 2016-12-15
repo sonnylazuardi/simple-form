@@ -28,18 +28,18 @@ class Navigator extends Component {
     };
 
     renderLabel = ({ route }, focused) => {
-        let tabStyle = styles.tabLabelInactive;
+        let color = '#9B9B9B';
         if (route.active) {
             if (focused) {
-                tabStyle = styles.tabLabel;
+                color = '#363A45';
             } else {
-                tabStyle = styles.tabLabelActive;
+                color = '#00B23E';
             }
         }
         return route.title ? 
-            <Text style={tabStyle}>
+            <Animated.Text style={[styles.tabLabel, {color}]}>
                 {route.title}
-            </Text> 
+            </Animated.Text> 
             : null;
     };
 
@@ -132,17 +132,6 @@ const styles = StyleSheet.create({
         padding: 15
     },
     tabLabel: {
-        color: '#363A45',
-        fontSize: 13,
-        backgroundColor: 'transparent'
-    },
-    tabLabelInactive: {
-        color: '#9B9B9B',
-        fontSize: 13,
-        backgroundColor: 'transparent'
-    },
-    tabLabelActive: {
-        color: '#00B23E',
         fontSize: 13,
         backgroundColor: 'transparent'
     },

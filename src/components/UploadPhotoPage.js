@@ -80,7 +80,6 @@ class UploadPhotoPage extends Component {
         const {valid} = this.props.photo;
         if (valid) {
             this.props.setPageActive(2, true);
-            this.props.setPage(2);
             this.props.showPhotoError(false);
         } else {
             this.props.showPhotoError(true);

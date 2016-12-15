@@ -10,6 +10,7 @@ import {
 import TouchableItem from 'react-native-tab-view/src/TouchableItem';
 import { SceneRendererPropType } from 'react-native-tab-view/src/TabViewPropTypes';
 import type { Scene, SceneRendererProps } from 'react-native-tab-view/src/TabViewTypeDefinitions';
+import IconArrow from './IconArrow';
 
 const styles = StyleSheet.create({
     container: {
@@ -53,10 +54,6 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-    },
-    iconNext: {
-        height: 15,
-        width: 15
     }
 });
 
@@ -315,8 +312,8 @@ export default class TabBar extends Component<DefaultProps, Props, State> {
             );
         });
 
-        renderView.splice(1, 0, <View key={'arrow-1'} style={{width: 15, justifyContent: 'center'}}><Image source={require('../../images/icon-next.png')} style={styles.iconNext}/></View>);
-        renderView.splice(3, 0, <View key={'arrow-2'} style={{width: 15, justifyContent: 'center'}}><Image source={require('../../images/icon-next.png')} style={styles.iconNext}/></View>);
+        renderView.splice(1, 0, <IconArrow key={'arrow-1'}/>);
+        renderView.splice(3, 0, <IconArrow key={'arrow-2'}/>);
 
         return (
             <Animated.View style={[ styles.tabbar, this.props.style ]}>

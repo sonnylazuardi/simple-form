@@ -36,7 +36,6 @@ class ContactInformationPage extends Component {
             if (valid) {
                 this.hideKeyboard();
                 this.props.setPageActive(3, true);
-                this.props.setPage(3);
                 this.props.showContactError(false);
             } else {
                 this.props.showContactError(true);
