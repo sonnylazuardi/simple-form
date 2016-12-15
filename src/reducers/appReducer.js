@@ -36,7 +36,8 @@ export default function appReducer(state = initialState, action = {}) {
                     ...routes.slice(0, index),
                     {...routes[index], active: payload.active},
                     ...routes.slice(index + 1)
-                ]
+                ],
+                index: payload.active ? (payload.page - 1) : state.index
             };
         default:
             return state;

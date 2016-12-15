@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setInfo, validate, showContactError } from '../actions/contactAction';
 import { setPageActive, setPage } from '../actions/appAction';
 import FloatingLabelTextInput from './uikit/FloatingLabelTextInput';
+import debounce from 'debounce';
 
 if (Platform.OS != 'web') {
     var { KeyboardAwareScrollView } = require('react-native-keyboard-aware-scroll-view');
@@ -13,10 +14,16 @@ if (Platform.OS != 'web') {
 
 class ContactInformationPage extends Component {
 
-    onChangeText(field, value) {
-        this.props.setInfo(field, value);
-        this.props.validate()
+    componentWillMount() {
+        this.debounceUpdate = debounce((field, value) => {
+            this.props.setInfo(field, value);
+            this.props.validate()
+        }, 200);
     }
+
+    onChangeText(field, value) {
+        this.debounceUpdate(field, value);
+    };
 
     hideKeyboard() {
         ['firstName', 'lastName', 'contactNumber', 'address'].forEach(field => {
@@ -29,7 +36,6 @@ class ContactInformationPage extends Component {
             if (valid) {
                 this.hideKeyboard();
                 this.props.setPageActive(3, true);
-                this.props.setPage(3);
                 this.props.showContactError(false);
             } else {
                 this.props.showContactError(true);
