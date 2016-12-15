@@ -23,7 +23,7 @@ run on device
 
 ## Running on Exponent
 
-Try the demo: `http://exp.host/@sonnylazuardi/simpleform`
+Try the demo: http://exp.host/@sonnylazuardi/simpleform
 The exponent source is on `exponent` branch
 
 ## Running on web
@@ -34,4 +34,4 @@ The exponent source is on `exponent` branch
 - `cd web/public && python -m SimpleHTTPServer 8000`
 - open `http://localhost:8000` on browser
 
-or open the demo on github pages of this repo `http://sonny.js.org/simple-form/`
+or open the demo on github pages of this repo http://sonny.js.org/simple-form/
