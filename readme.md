@@ -22,12 +22,12 @@ Here is the stack of technology of this repo:
 
 ## Display on various screen sizes
 
-![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss1.png)
-![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss2.png)
-![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss3.png)
-![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss4.png)
-![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss5.png)
-![ss](https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss6.png)
+<img src="https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss1.png" width="150" />
+<img src="https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss2.png" width="150" />
+<img src="https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss3.png" width="150" />
+<img src="https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss4.png" width="150" />
+<img src="https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss5.png" width="150" />
+<img src="https://cdn.rawgit.com/sonnylazuardi/simple-form/master/screenshots/ss6.png" width="150" />
 
 ## Running on device
 
