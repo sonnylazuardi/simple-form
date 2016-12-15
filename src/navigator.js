@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { setPageActive, setIndex } from './actions/appAction';
 import { resetContact } from './actions/contactAction';
 
-if (Platform.OS == 'web') {
+if (Platform.OS == 'web' || Platform.OS == 'android') {
     var KeyboardAvoidingView = View;
 } else {
     var {KeyboardAvoidingView} = require('react-native')

@@ -1,6 +1,9 @@
 ## Simple Form
 
-Simple Form that run on iOS, android, and web.
+Simple Form that includes photo image chooser, contact information submission on iOS, Android, and web.
+
+![ios](http://i.giphy.com/l3vRgsAmaPfXYCtJS.gif)
+![android](http://i.giphy.com/26FL8vBDV3vzgLiOQ.gif)
 
 Here is the stack of technology of this repo:
 
@@ -8,6 +11,23 @@ Here is the stack of technology of this repo:
 - React Native
 - React Native Web: to share code across web and mobile app
 - Redux: to maintain tab view state, form validation
+
+## Animation & Interaction
+
+- Image Popup: it can notify user while the image is being processed.
+
+- Sliding tab indicator: it can clearly show the current state of the steps and user can easily navigate back or forward
+
+- Text Input sequence and error focus: it can help users filling the form without scrolling and focus on the error field
+
+## Display on various screen sizes
+
+![ss](ss1.png)
+![ss](ss2.png)
+![ss](ss3.png)
+![ss](ss4.png)
+![ss](ss5.png)
+![ss](ss6.png)
 
 ## Running on device
 
