@@ -3,9 +3,10 @@ import {StyleSheet, View, Text, TouchableOpacity, ScrollView, Platform, Dimensio
 import { connect } from 'react-redux';
 import { setSource, showPhotoError } from '../actions/photoAction';
 import { setPageActive, setPage } from '../actions/appAction';
+import { ActionSheetProvider, connectActionSheet } from '@exponent/react-native-action-sheet';
 
 if (Platform.OS != 'web') {
-    var ImagePicker = require('react-native-image-picker');
+    var {ImagePicker} = require('exponent');
     var ImageView = require('react-native').Image;
 } else {
     var ImagePicker = {showImagePicker: () => {}};
@@ -39,34 +40,45 @@ class BounceInView extends React.Component {
     }
 }
 
+class UploadPhotoPageContainer extends Component {
+    render() {
+        return (
+            <ActionSheetProvider>
+                <UploadPhotoPage />
+            </ActionSheetProvider>
+        )
+    }
+}
+
+@connectActionSheet
 class UploadPhotoPage extends Component {
 
     chooseImage() {
-        const options = {
-            title: 'Select Photo',
-            storageOptions: {
-                skipBackup: true,
-                path: 'images'
-            }
-        };
-        ImagePicker.showImagePicker(options, (response) => {
-            if (response.didCancel) {
-                console.log('User cancelled image picker');
-            } else if (response.error) {
-                console.log('ImagePicker Error: ', response.error);
-            } else {
-                // You can display the image using either data...
-                const source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
-
-                // or a reference to the platform specific asset location
-                if (Platform.OS === 'ios') {
-                    const source = {uri: response.uri.replace('file://', ''), isStatic: true};
-                } else {
-                    const source = {uri: response.uri, isStatic: true};
-                }
-
-                this.props.setSource(source);
-                this.props.showPhotoError(false);
+        let options = ['Camera', 'Image Gallery', 'Cancel'];
+        let cancelButtonIndex = 2;
+        this.props.showActionSheetWithOptions({
+            options,
+            cancelButtonIndex
+        },
+        (buttonIndex) => {
+            if (buttonIndex == 0) {
+                ImagePicker.launchCameraAsync({
+                    allowsEditing: true
+                }).then(result => {
+                    if (!result.cancelled) {
+                        this.props.setSource({uri: result.uri});
+                        this.props.showPhotoError(false);
+                    }
+                })
+            } else if (buttonIndex == 1) {
+                ImagePicker.launchImageLibraryAsync({
+                    allowsEditing: true
+                }).then(result => {
+                    if (!result.cancelled) {
+                        this.props.setSource({uri: result.uri});
+                        this.props.showPhotoError(false);
+                    }
+                })
             }
         });
     }
@@ -289,4 +301,4 @@ UploadPhotoPage = connect(state => ({
     photo: state.photo
 }), {setSource, setPageActive, setPage, showPhotoError})(UploadPhotoPage);
 
-export default UploadPhotoPage;
+export default UploadPhotoPageContainer;

@@ -1,42 +1,45 @@
 {
-    "name": "SimpleForm",
-    "version": "0.0.1",
-    "private": true,
-    "scripts": {
-        "start": "node node_modules/react-native/local-cli/cli.js start",
-        "test": "jest",
-        "dev": "webpack-dev-server --port 3000 --config webpack.config.dev.js --inline --hot --colors --quiet"
-    },
-    "dependencies": {
-        "debounce": "^1.0.0",
-        "react": "15.3.2",
-        "react-addons-shallow-compare": "15.3.2",
-        "react-native": "0.38",
-        "react-native-image-picker": "latest",
-        "react-native-keyboard-aware-scroll-view": "^0.2.4",
-        "react-native-tab-view": "^0.0.40",
-        "react-native-web": "^0.0.56",
-        "react-redux": "^4.4.6",
-        "redux": "^3.6.0",
-        "redux-thunk": "^2.1.0",
-        "url-loader": "^0.5.7"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.18.0",
-        "babel-core": "^6.20.0",
-        "babel-jest": "17.0.2",
-        "babel-loader": "^6.2.9",
-        "babel-plugin-add-module-exports": "^0.2.1",
-        "babel-preset-es2015": "^6.18.0",
-        "babel-preset-react": "^6.16.0",
-        "babel-preset-react-native": "^1.9.0",
-        "babel-preset-stage-0": "^6.16.0",
-        "jest": "17.0.3",
-        "react-test-renderer": "15.3.2",
-        "webpack": "^1.14.0",
-        "webpack-dev-server": "^1.16.2"
-    },
-    "jest": {
-        "preset": "react-native"
-    }
+  "name": "SimpleForm",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "dev": "webpack-dev-server --port 3000 --config webpack.config.dev.js --inline --hot --colors --quiet",
+    "build": "webpack -p --config ./webpack.config.js"
+  },
+  "dependencies": {
+    "@exponent/react-native-action-sheet": "^0.3.0",
+    "debounce": "^1.0.0",
+    "exponent": "^12.0.0",
+    "react": "~15.3.2",
+    "react-addons-shallow-compare": "15.3.2",
+    "react-native": "github:exponentjs/react-native#sdk-12.0.0",
+    "react-native-image-picker": "latest",
+    "react-native-keyboard-aware-scroll-view": "^0.2.4",
+    "react-native-tab-view": "^0.0.40",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "url-loader": "^0.5.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-jest": "17.0.2",
+    "babel-loader": "^6.2.9",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-native": "^1.9.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "jest": "17.0.3",
+    "react-test-renderer": "15.3.2",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "main": ""
 }

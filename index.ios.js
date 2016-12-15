@@ -1,15 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import Exponent from 'exponent';
 
-import React from 'react';
 import {
-  AppRegistry,
-  Text,
+  AppRegistry
 } from 'react-native';
 
 import App from './src/app';
 
-AppRegistry.registerComponent('SimpleForm', () => App);
+// AppRegistry.registerComponent('SimpleForm', () => App);
+Exponent.registerRootComponent(App);

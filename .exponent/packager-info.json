@@ -1,0 +1,8 @@
+{
+  "exponentServerPort": 19004,
+  "packagerPort": 19006,
+  "packagerPid": 94101,
+  "exponentServerNgrokUrl": "https://5h-2ni.sonnylazuardi.simple-form.exp.direct",
+  "packagerNgrokUrl": "https://packager.5h-2ni.sonnylazuardi.simple-form.exp.direct",
+  "ngrokPid": 94122
+}
