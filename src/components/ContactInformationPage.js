@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform} from 'react-native';
+import {StyleSheet, View, Text, Image, TextInput, ScrollView, KeyboardAvoidingView, Platform} from 'react-native';
 import { connect } from 'react-redux';
 import { setInfo, validate, showContactError } from '../actions/contactAction';
 import { setPageActive, setPage } from '../actions/appAction';
 import FloatingLabelTextInput from './uikit/FloatingLabelTextInput';
 import debounce from 'debounce';
+import NextButton from './uikit/NextButton';
 
 if (Platform.OS != 'web') {
     var { KeyboardAwareScrollView } = require('react-native-keyboard-aware-scroll-view');
@@ -115,11 +116,7 @@ class ContactInformationPage extends Component {
                     </View>
                 </KeyboardAwareScrollView>
                 <View style={styles.footer}>
-                    <TouchableOpacity onPress={this.onSubmit.bind(this)}>
-                        <View style={[styles.buttonNextWrapper, !valid ? styles.buttonNextInvalid : null]}>
-                            <Text style={styles.buttonNextText}>NEXT</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <NextButton onPress={this.onSubmit.bind(this)} valid={valid} />
                 </View>
             </View>
         );
@@ -139,18 +136,6 @@ const styles = StyleSheet.create({
     footer: {
         backgroundColor: '#F7F9FB',
     },
-    buttonAddWrapper: {
-        height: 200,
-        borderWidth: 1,
-        borderColor: '#CCD6DD',
-        borderRadius: 4,
-        backgroundColor: '#EAEFF2',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    buttonAddIcon: {
-        alignItems: 'center'
-    },
     text: {
         margin: 15,
         marginTop: 5,
@@ -163,29 +148,6 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         color: '#363A45',
         fontSize: 16
-    },
-    buttonNextWrapper: {
-        height: 40, 
-        backgroundColor: '#00B140',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 4,
-        margin: 10
-    },
-    buttonNextInvalid: {
-        backgroundColor: '#CCD6DD',
-    },
-    buttonNextText: {
-        color: '#fff'
-    },
-    iconAdd: {
-        width: 30,
-        height: 30
-    },
-    textAdd: {
-        fontSize: 13,
-        marginTop: 10,
-        color: '#00B140'
     },
     input: {
         backgroundColor: '#EAEFF2',

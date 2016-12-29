@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setSource, showPhotoError } from '../actions/photoAction';
 import { setPageActive, setPage } from '../actions/appAction';
 import { ActionSheetProvider, connectActionSheet } from '@exponent/react-native-action-sheet';
+import NextButton from './uikit/NextButton';
 
 if (Platform.OS != 'web') {
     var {ImagePicker} = require('exponent');
@@ -192,11 +193,7 @@ class UploadPhotoPage extends Component {
                     
                 </ScrollView>
                 <View style={styles.footer}>
-                    <TouchableOpacity onPress={this.onSubmit.bind(this)}>
-                        <View style={[styles.buttonNextWrapper, !valid ? styles.buttonNextInvalid : null]}>
-                            <Text style={styles.buttonNextText}>NEXT</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <NextButton onPress={this.onSubmit.bind(this)} valid={valid} />
                 </View>
             </View>
         );
@@ -239,20 +236,6 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         color: '#363A45',
         fontSize: 16
-    },
-    buttonNextWrapper: {
-        height: 40, 
-        backgroundColor: '#00B140',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 4,
-        margin: 10
-    },
-    buttonNextInvalid: {
-        backgroundColor: '#CCD6DD',
-    },
-    buttonNextText: {
-        color: '#fff'
     },
     iconAdd: {
         width: 30,
